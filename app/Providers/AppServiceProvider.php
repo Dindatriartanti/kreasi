@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Providers;
-use Illuminate\Pagination\Paginator;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 
 use App\Models\Karya;
 use App\Models\Pengaduan;
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
 
         View::composer('admin.components.navbar', function ($view) {
 
@@ -136,6 +141,5 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
         });
-
     }
 }
