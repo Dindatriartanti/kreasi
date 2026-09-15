@@ -103,7 +103,7 @@
                                     'storage/' .
                                     (
                                         $item->thumbnail
-                                        ?: 'system/noimage.jpg'
+                                        ?: 'system/defaultKarya.png'
                                     )
                                 ) }}"
                                 alt="{{ $item->judul_karya }}">

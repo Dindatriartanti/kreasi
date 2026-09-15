@@ -268,7 +268,7 @@
                         <div class="card h-100 border-0 shadow-sm">
 
                             <img
-                                src="{{ asset('storage/' . ($item->thumbnail ?: 'system/noimage.jpg')) }}"
+                                src="{{ asset('storage/' . ($item->thumbnail ?: 'system/defaultKarya.png')) }}"
                                 class="card-img-top"
                                 style="height:170px;object-fit:cover;">
 
