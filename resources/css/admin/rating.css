@@ -1,0 +1,11 @@
+.rating-admin-table .table {
+    margin-bottom: 0;
+}
+
+.rating-admin-table .table th {
+    white-space: nowrap;
+}
+
+.rating-admin-table .table td {
+    vertical-align: middle;
+}

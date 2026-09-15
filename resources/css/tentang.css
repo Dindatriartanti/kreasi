@@ -1,0 +1,415 @@
+/* ==========================================================
+   ABOUT HEADER
+========================================================== */
+
+.about-header{
+
+    padding:120px 0 80px;
+
+    background: #0d6efd;
+
+    color:#fff;
+
+    text-align:center;
+
+}
+
+.about-header h1{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.about-header p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    opacity:.9;
+
+    font-size:1.1rem;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   ABOUT IMAGE
+========================================================== */
+
+.about-image{
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.about-image img{
+
+    width:100%;
+
+    transition:.5s;
+
+}
+
+.about-image:hover img{
+
+    transform:scale(1.05);
+
+}
+
+/* ==========================================================
+   ABOUT CONTENT
+========================================================== */
+
+.about-content h2{
+
+    font-weight:700;
+
+    color:#0F4C81;
+
+    margin-bottom:25px;
+
+}
+
+.about-content p{
+
+    color:#6c757d;
+
+    line-height:2;
+
+    text-align:justify;
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.about-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    height:100%;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.1);
+
+}
+
+.about-card i{
+
+    font-size:3rem;
+
+    color:#0F4C81;
+
+    margin-bottom:20px;
+
+}
+
+.about-card h4{
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.about-card p{
+
+    color:#6c757d;
+
+    line-height:1.8;
+
+}
+
+.about-card ul{
+
+    padding-left:20px;
+
+    margin-bottom:0;
+
+}
+
+.about-card li{
+
+    margin-bottom:10px;
+
+    color:#6c757d;
+
+}
+
+/* ==========================================================
+   SERVICE
+========================================================== */
+
+.about-service{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    height:100%;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.about-service:hover{
+
+    transform:translateY(-8px);
+
+    background:#0F4C81;
+
+    color:#fff;
+
+}
+
+.about-service i{
+
+    font-size:3rem;
+
+    color:#0F4C81;
+
+    transition:.35s;
+
+}
+
+.about-service:hover i{
+
+    color:#fff;
+
+}
+
+.about-service h5{
+
+    margin-top:20px;
+
+    font-weight:600;
+
+}
+
+.about-service p{
+
+    margin-top:10px;
+
+    color:#6c757d;
+
+    transition:.35s;
+
+}
+
+.about-service:hover p{
+
+    color:rgba(255,255,255,.9);
+
+}
+
+/* ==========================================================
+   SECTION TITLE
+========================================================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+    font-size:2.3rem;
+
+    font-weight:700;
+
+    color:#0F4C81;
+
+}
+
+.section-title p{
+
+    color:#6c757d;
+
+    margin-top:15px;
+
+}
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+.about-cta{
+
+    background:linear-gradient(
+        135deg,
+        #0F4C81,
+        #1A659E
+    );
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    border-radius:25px;
+
+}
+
+.about-cta h2{
+
+    font-size:2.2rem;
+
+    font-weight:700;
+
+}
+
+.about-cta p{
+
+    max-width:700px;
+
+    margin:20px auto 35px;
+
+    opacity:.9;
+
+}
+
+.about-cta .btn{
+
+    border-radius:40px;
+
+    padding:12px 35px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.btn-about{
+
+    background:#0F4C81;
+
+    color:#fff;
+
+    border:none;
+
+    transition:.35s;
+
+}
+
+.btn-about:hover{
+
+    background:#08355B;
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .about-header{
+
+        padding:100px 0 70px;
+
+    }
+
+    .about-header h1{
+
+        font-size:2.4rem;
+
+    }
+
+    .about-content{
+
+        margin-top:30px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .about-header{
+
+        padding:90px 0 60px;
+
+    }
+
+    .about-header h1{
+
+        font-size:2rem;
+
+    }
+
+    .about-card{
+
+        padding:25px;
+
+    }
+
+    .about-service{
+
+        padding:30px 20px;
+
+    }
+
+    .about-cta h2{
+
+        font-size:1.7rem;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .about-header h1{
+
+        font-size:1.8rem;
+
+    }
+
+    .about-header p{
+
+        font-size:1rem;
+
+    }
+
+}

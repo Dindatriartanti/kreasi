@@ -1,0 +1,129 @@
+.rating-section {
+    padding: 80px 0;
+}
+
+.rating-badge {
+    display: inline-block;
+    padding: 7px 16px;
+    background: #eef5ff;
+    color: #0d6efd;
+    border-radius: 999px;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.rating-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.rating-summary-card,
+.rating-form-card,
+.login-rating-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+.rating-average {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.rating-stars,
+.comment-stars {
+    color: #ffc107;
+}
+
+.rating-stars {
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.rating-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8f9fa;
+}
+
+.rating-info > i {
+    font-size: 2rem;
+    color: #ffc107;
+}
+
+
+/* RATING INPUT */
+
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.rating-input input {
+    display: none;
+}
+
+.rating-input label {
+    font-size: 2rem;
+    color: #ced4da;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.rating-input label:hover,
+.rating-input label:hover ~ label,
+.rating-input input:checked ~ label {
+    color: #ffc107;
+}
+
+
+/* KOMENTAR */
+
+.comment-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
+}
+
+.comment-avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.empty-rating {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f9fa;
+    border-radius: 18px;
+}
+
+.empty-rating i {
+    font-size: 3rem;
+    color: #adb5bd;
+    margin-bottom: 15px;
+}
+
+.login-rating-card {
+    background: #f8f9fa;
+}
+
+.login-rating-card > div > i {
+    color: #0d6efd;
+}

@@ -1,0 +1,325 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* ======================================================
+   ROOT
+====================================================== */
+
+:root{
+    --primary:#0d6efd;
+    --dark:#212529;
+    --gray:#6c757d;
+    --border:#dee2e6;
+    --white:#ffffff;
+}
+
+/* ======================================================
+   RESET
+====================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    background:#f3f4f6;
+    overflow-x:hidden;
+}
+
+.page-header{
+    padding:90px 0;
+    background:#0d6efd;
+    text-align:center;
+}
+
+.page-header h1{
+    margin-bottom:15px;
+    color:#fff;
+    font-size:2.8rem;
+    font-weight:700;
+}
+
+.page-header p{
+    max-width:720px;
+    margin:0 auto;
+    color:rgba(255,255,255,.9);
+    font-size:1.05rem;
+    line-height:1.8;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+main{
+    min-height:100vh;
+    padding-top:72px;
+}
+
+/* ===========================================================
+   Navbar
+=========================================================== */
+
+.navbar{
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(10px);
+
+    transition:.35s ease;
+
+    padding:16px 0;
+
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+
+}
+
+.navbar-brand{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    width:48px;
+
+    height:48px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+.brand-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.2;
+
+}
+
+.brand-text span{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.brand-text small{
+
+    color:#6c757d;
+
+    font-size:12px;
+
+}
+
+.navbar-nav{
+
+    gap:8px;
+
+}
+
+.navbar-nav .nav-link{
+
+    position:relative;
+
+    color:#1E293B;
+
+    font-weight:500;
+
+    padding:.75rem 1rem;
+
+    transition:.35s;
+
+}
+
+.navbar-nav .nav-link:hover{
+
+    color:var(--primary);
+
+}
+
+.navbar-nav .nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:5px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:0;
+
+    height:3px;
+
+    background:var(--primary);
+
+    border-radius:30px;
+
+    transition:.35s;
+
+}
+
+.navbar-nav .nav-link:hover::after{
+
+    width:70%;
+
+}
+
+.navbar-nav .nav-link.active{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.navbar-nav .nav-link.active::after{
+
+    width:70%;
+
+}
+
+.navbar .btn{
+
+    border-radius:50px;
+
+    padding:10px 26px;
+
+}
+
+.navbar-toggler{
+
+    border:none;
+
+    box-shadow:none!important;
+
+}
+
+.navbar-toggler:focus{
+
+    box-shadow:none;
+
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.footer{
+    background:#7d7878;
+    padding:40px 0;
+}
+
+.footer h5{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.footer p{
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.footer ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.footer li{
+    margin-bottom:6px;
+}
+
+.footer a{
+    color:#212529;
+}
+
+.footer a:hover{
+    color:#0d6efd;
+}
+
+@media(max-width:991px){
+
+    .navbar{
+        height:auto;
+    }
+
+    main{
+        padding-top:80px;
+    }
+
+    .navbar-collapse{
+        background:#fff;
+        padding:15px 0;
+    }
+
+    .navbar-nav{
+        gap:0;
+    }
+
+    .btn-kontributor{
+        width:100%;
+        margin-top:15px;
+    }
+
+    .footer{
+        text-align:center;
+    }
+
+    .footer .col-lg-6:first-child{
+        margin-bottom:30px;
+    }
+
+}
+
+.card{
+    transition:.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 1rem 3rem rgba(0,0,0,.15)!important;
+}
+
+.card img{
+    transition:.4s;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
+.btn{
+    transition:.3s;
+}
+
+.position-relative img{
+    filter:brightness(.85);
+}

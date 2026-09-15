@@ -1,0 +1,667 @@
+:root{
+
+    --primary:#0d6efd;
+    --sidebar:#1e293b;
+    --sidebar-hover:#334155;
+    --background:#f5f7fb;
+    --white:#ffffff;
+    --text:#334155;
+    --border:#e5e7eb;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+    background:var(--background);
+
+}
+
+.wrapper{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+.main-content{
+
+    flex:1;
+    display:flex;
+    flex-direction:column;
+
+}
+
+.content{
+
+    flex:1;
+    padding:30px;
+
+}
+
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:#212529;
+    position:fixed;
+    left:0;
+    top:0;
+    overflow-y:auto;
+}
+
+.sidebar-brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-brand img{
+    width:48px;
+}
+
+.sidebar-brand h5{
+    color:#fff;
+    margin:0;
+    font-size:16px;
+    font-weight:600;
+}
+
+.sidebar-brand span{
+    color:#adb5bd;
+    font-size:13px;
+}
+
+.sidebar-title{
+    color:#6c757d;
+    font-size:11px;
+    font-weight:700;
+    padding:20px 20px 8px;
+    letter-spacing:1px;
+}
+
+.sidebar .nav-link{
+    color:#dee2e6;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-radius:0;
+}
+
+.sidebar .nav-link:hover{
+    background:#343a40;
+    color:#fff;
+}
+
+.sidebar .nav-link.active{
+    background:#0d6efd;
+    color:#fff;
+}
+
+.main-content{
+    margin-left:260px;
+    min-height:100vh;
+    background:#f8f9fa;
+}
+
+.navbar{
+
+    height:80px;
+
+}
+
+.navbar h4{
+
+    font-size:24px;
+
+}
+
+.navbar .dropdown-toggle{
+
+    border:none;
+
+}
+
+.navbar .dropdown-toggle::after{
+
+    margin-left:10px;
+
+}
+
+.navbar .dropdown-toggle:focus{
+
+    box-shadow:none;
+
+}
+
+.navbar img{
+
+    object-fit:cover;
+
+}
+
+.icon-box{
+
+    width:60px;
+    height:60px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:24px;
+
+}
+
+.card{
+
+    border-radius:15px;
+
+}
+
+.card-header{
+
+    border-bottom:1px solid #eee;
+
+    font-weight:600;
+
+}
+
+.table th{
+
+    background:#f8f9fa;
+
+}
+
+.table td,
+.table th{
+
+    padding:15px;
+
+}
+/* ======================================
+ABOUT
+====================================== */
+
+.about-section{
+
+    background:#fff;
+
+}
+
+.about-card{
+
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.about-card h3{
+
+    color:var(--primary);
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:8px;
+
+}
+
+.about-card p{
+
+    margin:0;
+    color:var(--secondary);
+
+}
+
+/* ===========================================
+   Notification
+=========================================== */
+
+.notification-list{
+
+    max-height:420px;
+
+    overflow-y:auto;
+
+}
+
+.notification-list::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.notification-list::-webkit-scrollbar-thumb{
+
+    background:#cfcfcf;
+
+    border-radius:20px;
+
+}
+
+.notification-list::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.notification-item{
+
+    padding:15px 18px;
+
+    border-bottom:1px solid #f1f1f1;
+
+    transition:.25s;
+
+}
+
+.notification-item:hover{
+
+    background:#f8f9fa;
+
+}
+
+.notification-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.notification-time{
+
+    font-size:12px;
+
+    color:#999;
+
+}
+/* ===========================================================
+   ADMIN NAVBAR
+=========================================================== */
+
+.admin-navbar{
+
+    background:#fff;
+
+    border-bottom:1px solid #e9ecef;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+    padding:18px 24px;
+
+}
+
+.navbar-title{
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    margin:0;
+
+    color:#212529;
+
+}
+
+.navbar-subtitle{
+
+    color:#6c757d;
+
+    font-size:.9rem;
+
+}
+
+/* ===========================================================
+   Notification Button
+=========================================================== */
+
+.notification-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:12px;
+
+    border:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f8f9fa;
+
+    transition:.25s;
+
+}
+
+.notification-btn:hover{
+
+    background:#e9ecef;
+
+}
+
+.notification-badge{
+
+    position:absolute;
+
+    top:-6px;
+
+    right:-6px;
+
+    min-width:22px;
+
+    height:22px;
+
+    padding:0 6px;
+
+    border-radius:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#dc3545;
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:600;
+
+}
+
+/* ===========================================================
+   Notification Dropdown
+=========================================================== */
+
+.notification-dropdown{
+
+    width:400px;
+
+    border:none;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+}
+
+.notification-header{
+
+    padding:16px 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:1px solid #ececec;
+
+    background:#fff;
+
+    font-weight:600;
+
+}
+
+/* ===========================================================
+   Notification Scroll
+=========================================================== */
+
+.notification-list{
+
+    max-height:420px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+/* Scrollbar */
+
+.notification-list::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.notification-list::-webkit-scrollbar-track{
+
+    background:#f5f5f5;
+
+}
+
+.notification-list::-webkit-scrollbar-thumb{
+
+    background:#c8c8c8;
+
+    border-radius:20px;
+
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover{
+
+    background:#999;
+
+}
+
+/* ===========================================================
+   Notification Item
+=========================================================== */
+
+.notification-item{
+
+    padding:16px 18px;
+
+    border-bottom:1px solid #f2f2f2;
+
+    transition:.25s;
+
+    white-space:normal;
+
+}
+
+.notification-item:hover{
+
+    background:#f8f9fa;
+
+}
+
+.notification-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.notification-icon{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:#f8f9fa;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-right:15px;
+
+    flex-shrink:0;
+
+}
+
+.notification-icon i{
+
+    font-size:22px;
+
+}
+
+.notification-title{
+
+    font-weight:600;
+
+    color:#212529;
+
+    margin-bottom:3px;
+
+}
+
+.notification-message{
+
+    font-size:.92rem;
+
+    color:#6c757d;
+
+    line-height:1.4;
+
+}
+
+.notification-time{
+
+    margin-top:6px;
+
+    font-size:.8rem;
+
+    color:#adb5bd;
+
+}
+
+.notification-time i{
+
+    margin-right:4px;
+
+}
+
+/* ===========================================================
+   Empty Notification
+=========================================================== */
+
+.notification-empty{
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    color:#adb5bd;
+
+}
+
+.notification-empty p{
+
+    margin-top:15px;
+
+    margin-bottom:0;
+
+}
+
+/* ===========================================================
+   User
+=========================================================== */
+
+.user-button{
+
+    display:flex;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    padding:8px 12px;
+
+    border:1px solid #ececec;
+
+    background:#fff;
+
+    transition:.25s;
+
+}
+
+.user-button:hover{
+
+    background:#f8f9fa;
+
+}
+
+.user-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-left:12px;
+
+    text-align:left;
+
+}
+
+.user-name{
+
+    font-weight:600;
+
+    color:#212529;
+
+}
+
+.user-info small{
+
+    color:#6c757d;
+
+}
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media(max-width:768px){
+
+    .notification-dropdown{
+
+        width:340px;
+
+    }
+
+    .user-info{
+
+        display:none;
+
+    }
+
+}
