@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Menampilkan halaman login.
+     */
     public function showLoginForm()
     {
         return view('auth.login', [
             'title' => 'Login',
-            'showRegisterLink' => User::count() < 10
+            'showRegisterLink' => true,
         ]);
     }
 
+    /**
+     * Proses login.
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -28,10 +34,6 @@ class LoginController extends Controller
         |--------------------------------------------------------------------------
         | Login
         |--------------------------------------------------------------------------
-        |
-        | Jangan tambahkan status ke Auth::attempt().
-        | Biarkan mekanisme password tetap seperti yang sudah terbukti bekerja.
-        |
         */
 
         if (!Auth::attempt([
@@ -60,10 +62,6 @@ class LoginController extends Controller
         |--------------------------------------------------------------------------
         | Cek Status Akun
         |--------------------------------------------------------------------------
-        |
-        | User boleh melakukan Auth::attempt() terlebih dahulu,
-        | tetapi tidak boleh melanjutkan ke dashboard jika belum aktif.
-        |
         */
 
         if ($user->status !== 'aktif') {
@@ -133,6 +131,9 @@ class LoginController extends Controller
             );
     }
 
+    /**
+     * Logout pengguna.
+     */
     public function logout(Request $request)
     {
         /*
@@ -145,7 +146,7 @@ class LoginController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Hancurkan Session Lama
+        | Hancurkan Session
         |--------------------------------------------------------------------------
         */
 
@@ -158,6 +159,12 @@ class LoginController extends Controller
         */
 
         $request->session()->regenerateToken();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Kembali ke Login
+        |--------------------------------------------------------------------------
+        */
 
         return redirect()
             ->route('login')

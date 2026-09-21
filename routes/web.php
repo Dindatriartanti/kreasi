@@ -2,20 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| AUTH CONTROLLERS
-|--------------------------------------------------------------------------
-*/
-
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
-/*
-|--------------------------------------------------------------------------
-| WEBSITE CONTROLLERS
-|--------------------------------------------------------------------------
-*/
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KoleksiController;
@@ -25,21 +13,9 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RatingKontributorController;
 use App\Http\Controllers\KontributorRatingController;
 
-/*
-|--------------------------------------------------------------------------
-| GLOBAL CONTROLLERS
-|--------------------------------------------------------------------------
-*/
-
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PendaftaranKunjunganController;
 use App\Http\Controllers\PengaduanController;
-
-/*
-|--------------------------------------------------------------------------
-| ADMIN CONTROLLERS
-|--------------------------------------------------------------------------
-*/
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -51,35 +27,15 @@ use App\Http\Controllers\Admin\KontributorController as AdminKontributorControll
 use App\Http\Controllers\Admin\KaryaController as AdminKaryaController;
 use App\Http\Controllers\Admin\RatingKontributorController as AdminRatingKontributorController;
 
-/*
-|--------------------------------------------------------------------------
-| KONTRIBUTOR CONTROLLERS
-|--------------------------------------------------------------------------
-*/
-
 use App\Http\Controllers\Kontributor\DashboardController as KontributorDashboardController;
 use App\Http\Controllers\Kontributor\ProfilController;
 use App\Http\Controllers\Kontributor\KaryaController as KontributorKaryaController;
-
-
-/*
-|--------------------------------------------------------------------------
-| WEBSITE (PUBLIC)
-|--------------------------------------------------------------------------
-*/
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('guest.home');
 
 Route::view('/tentang', 'guest.tentang')
     ->name('guest.tentang');
-
-
-/*
-|--------------------------------------------------------------------------
-| GALLERY
-|--------------------------------------------------------------------------
-*/
 
 Route::get(
     '/gallery',
@@ -89,12 +45,6 @@ Route::get(
 Route::prefix('gallery')
     ->name('guest.gallery.')
     ->group(function () {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Museum
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/museum',
@@ -106,75 +56,31 @@ Route::prefix('gallery')
             [KoleksiController::class, 'show']
         )->name('museum.show');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Kontributor
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/kontributor',
             [KontributorController::class, 'index']
         )->name('kontributor.index');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Rating Kontributor
-        |--------------------------------------------------------------------------
-        */
-
         Route::post(
             '/kontributor/{kontributor:slug}/rating',
             [RatingKontributorController::class, 'store']
-        )
-            ->name('kontributor.rating.store');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Profil Kontributor
-        |--------------------------------------------------------------------------
-        */
+        )->name('kontributor.rating.store');
 
         Route::get(
             '/kontributor/{kontributor:slug}',
             [KontributorController::class, 'show']
         )->name('kontributor.show');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Semua Karya Kontributor
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/kontributor/{kontributor:slug}/karya',
             [KontributorController::class, 'karyaIndex']
         )->name('kontributor.karya.index');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Detail Karya
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/kontributor/{kontributor:slug}/karya/{karya:slug}',
             [KontributorController::class, 'karya']
         )->name('kontributor.karya.show');
-
     });
-
-
-/*
-|--------------------------------------------------------------------------
-| WEBSITE - KEGIATAN
-|--------------------------------------------------------------------------
-*/
 
 Route::get(
     '/kegiatan',
@@ -186,24 +92,10 @@ Route::get(
     [KegiatanController::class, 'show']
 )->name('guest.kegiatan.show');
 
-
-/*
-|--------------------------------------------------------------------------
-| WEBSITE - KONTAK
-|--------------------------------------------------------------------------
-*/
-
 Route::get(
     '/kontak',
     [KontakController::class, 'index']
 )->name('guest.kontak');
-
-
-/*
-|--------------------------------------------------------------------------
-| BOOKING & PENGADUAN
-|--------------------------------------------------------------------------
-*/
 
 Route::post(
     '/booking',
@@ -214,13 +106,6 @@ Route::post(
     '/pengaduan',
     [PengaduanController::class, 'store']
 )->name('guest.pengaduan.store');
-
-
-/*
-|--------------------------------------------------------------------------
-| AUTH
-|--------------------------------------------------------------------------
-*/
 
 Route::middleware('guest')->group(function () {
 
@@ -243,9 +128,7 @@ Route::middleware('guest')->group(function () {
         '/register',
         [RegisterController::class, 'register']
     );
-
 });
-
 
 Route::post(
     '/logout',
@@ -254,35 +137,15 @@ Route::post(
     ->middleware('auth')
     ->name('logout');
 
-
-/*
-|--------------------------------------------------------------------------
-| ADMIN
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware('auth')
+Route::middleware(['auth', 'no.cache'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Dashboard
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/dashboard',
             [DashboardController::class, 'index']
         )->name('dashboard');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | MASTER DATA
-        |--------------------------------------------------------------------------
-        */
 
         Route::resource(
             'user',
@@ -299,36 +162,15 @@ Route::middleware('auth')
             KategoriKontributorController::class
         );
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | KOLEKSI MUSEUM
-        |--------------------------------------------------------------------------
-        */
-
         Route::resource(
             'koleksi',
             AdminKoleksiController::class
         );
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | KEGIATAN
-        |--------------------------------------------------------------------------
-        */
-
         Route::resource(
             'kegiatan',
             AdminKegiatanController::class
         );
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | KONTRIBUTOR
-        |--------------------------------------------------------------------------
-        */
 
         Route::resource(
             'kontributor',
@@ -339,13 +181,6 @@ Route::middleware('auth')
             'edit',
             'update',
         ]);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | RATING KONTRIBUTOR
-        |--------------------------------------------------------------------------
-        */
 
         Route::prefix('rating')
             ->name('rating.')
@@ -365,15 +200,7 @@ Route::middleware('auth')
                     '/{rating}',
                     [AdminRatingKontributorController::class, 'destroy']
                 )->name('destroy');
-
             });
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | MODERASI KARYA
-        |--------------------------------------------------------------------------
-        */
 
         Route::resource(
             'karya',
@@ -385,13 +212,6 @@ Route::middleware('auth')
             'update',
             'destroy',
         ]);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | BOOKING KUNJUNGAN
-        |--------------------------------------------------------------------------
-        */
 
         Route::prefix('booking')
             ->name('booking.')
@@ -426,15 +246,7 @@ Route::middleware('auth')
                     '/{booking}',
                     [PendaftaranKunjunganController::class, 'show']
                 )->name('show');
-
             });
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | PENGADUAN
-        |--------------------------------------------------------------------------
-        */
 
         Route::prefix('pengaduan')
             ->name('pengaduan.')
@@ -464,40 +276,18 @@ Route::middleware('auth')
                     '/{pengaduan}',
                     [PengaduanController::class, 'show']
                 )->name('show');
-
             });
-
     });
 
-
-/*
-|--------------------------------------------------------------------------
-| KONTRIBUTOR
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware('auth')
+Route::middleware(['auth', 'no.cache'])
     ->prefix('kontributor')
     ->name('kontributor.')
     ->group(function () {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Dashboard
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/dashboard',
             [KontributorDashboardController::class, 'index']
         )->name('dashboard');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Profil
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/profil',
@@ -514,24 +304,10 @@ Route::middleware('auth')
             [ProfilController::class, 'update']
         )->name('profil.update');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Rating & Komentar
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/rating',
             [KontributorRatingController::class, 'index']
         )->name('rating.index');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Karya Saya
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/karya',
@@ -548,36 +324,15 @@ Route::middleware('auth')
             [KontributorKaryaController::class, 'store']
         )->name('karya.store');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Sedang Diajukan
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/karya/review',
             [KontributorKaryaController::class, 'review']
         )->name('karya.review');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Detail Karya
-        |--------------------------------------------------------------------------
-        */
-
         Route::get(
             '/karya/{karya}',
             [KontributorKaryaController::class, 'show']
         )->name('karya.show');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Edit Karya
-        |--------------------------------------------------------------------------
-        */
 
         Route::get(
             '/karya/{karya}/edit',
@@ -589,16 +344,8 @@ Route::middleware('auth')
             [KontributorKaryaController::class, 'update']
         )->name('karya.update');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | Hapus Karya
-        |--------------------------------------------------------------------------
-        */
-
         Route::delete(
             '/karya/{karya}',
             [KontributorKaryaController::class, 'destroy']
         )->name('karya.destroy');
-
     });
