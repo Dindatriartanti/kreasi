@@ -66,4 +66,13 @@ class Kontributor extends Model
             'id_kontributor'
         )->where('status', 'publish');
     }
+
+    public function karyaReview()
+    {
+        return $this->hasMany(
+            Karya::class,
+            'id_kontributor',
+            'id_kontributor'
+        )->where('status', 'review');
+    }
 }
