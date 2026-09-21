@@ -9,26 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    public function __construct()
-    {
-        if (User::count() >= 10) {
-
-            $this->middleware(function ($request, $next) {
-
-                return redirect()
-                    ->route('login')
-                    ->with(
-                        'info',
-                        'Pendaftaran telah ditutup.'
-                    );
-            });
-        }
-    }
-
+    /**
+     * Menampilkan halaman registrasi.
+     */
     public function showRegistrationForm()
     {
         return view('auth.register', [
@@ -36,6 +24,9 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * Proses registrasi kontributor.
+     */
     public function register(Request $request)
     {
         /*
@@ -87,10 +78,9 @@ class RegisterController extends Controller
 
         ]);
 
-
         /*
         |--------------------------------------------------------------------------
-        | Mulai Transaksi
+        | Mulai Transaksi Database
         |--------------------------------------------------------------------------
         */
 
@@ -100,7 +90,7 @@ class RegisterController extends Controller
 
             /*
             |--------------------------------------------------------------------------
-            | Upload Sertifikat / Bukti Hasil Karya
+            | Upload Bukti Karya
             |--------------------------------------------------------------------------
             */
 
@@ -110,10 +100,11 @@ class RegisterController extends Controller
 
                 $buktiKarya = $request
                     ->file('bukti_karya')
-                    ->store('kontributor/bukti', 'public');
-
+                    ->store(
+                        'kontributor/bukti',
+                        'public'
+                    );
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -141,7 +132,6 @@ class RegisterController extends Controller
 
             ]);
 
-
             /*
             |--------------------------------------------------------------------------
             | Buat Slug Kontributor
@@ -151,7 +141,6 @@ class RegisterController extends Controller
             $slug = Str::slug(
                 $validated['username']
             );
-
 
             /*
             |--------------------------------------------------------------------------
@@ -164,15 +153,16 @@ class RegisterController extends Controller
             $counter = 1;
 
             while (
-                Kontributor::where('slug', $slug)->exists()
+                Kontributor::where(
+                    'slug',
+                    $slug
+                )->exists()
             ) {
 
                 $slug = $originalSlug . '-' . $counter;
 
                 $counter++;
-
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -198,7 +188,6 @@ class RegisterController extends Controller
 
             ]);
 
-
             /*
             |--------------------------------------------------------------------------
             | Commit Transaksi
@@ -206,7 +195,6 @@ class RegisterController extends Controller
             */
 
             DB::commit();
-
 
             /*
             |--------------------------------------------------------------------------
@@ -221,17 +209,15 @@ class RegisterController extends Controller
                     'Registrasi berhasil. Akun Anda masih menunggu aktivasi admin. Silakan hubungi admin untuk mengaktifkan status akun Anda.'
                 );
 
-
         } catch (\Throwable $e) {
 
             /*
             |--------------------------------------------------------------------------
-            | Rollback
+            | Rollback Database
             |--------------------------------------------------------------------------
             */
 
             DB::rollBack();
-
 
             /*
             |--------------------------------------------------------------------------
@@ -241,15 +227,13 @@ class RegisterController extends Controller
 
             if (!empty($buktiKarya)) {
 
-                \Illuminate\Support\Facades\Storage::disk('public')
+                Storage::disk('public')
                     ->delete($buktiKarya);
-
             }
-
 
             /*
             |--------------------------------------------------------------------------
-            | Simpan Error
+            | Simpan Error ke Log
             |--------------------------------------------------------------------------
             */
 
@@ -262,10 +246,9 @@ class RegisterController extends Controller
                 ]
             );
 
-
             /*
             |--------------------------------------------------------------------------
-            | Kembali ke Form
+            | Kembali ke Form Registrasi
             |--------------------------------------------------------------------------
             */
 
